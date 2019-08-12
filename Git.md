@@ -41,3 +41,6 @@ $ git config --global user.email "email@example.com"
 5. **git log**查看提交记录
 6. 再次修改后,可继续使用**git add**以及**git commit**提交变更
 
+* 一个**git commit**可以对应多个**git add**
+* 未做add的新文件不会被**git diff**识别
+* add后修改的内容,不会被commit提交(除非再次add)
