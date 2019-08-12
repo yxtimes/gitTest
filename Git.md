@@ -37,5 +37,6 @@ $ git config --global user.email "email@example.com"
     create mode 100644 readme.txt
    ```
 
-   
+
+5. **git log**查看提交记录
 
