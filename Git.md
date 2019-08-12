@@ -39,4 +39,5 @@ $ git config --global user.email "email@example.com"
 
 
 5. **git log**查看提交记录
+6. 再次修改后,可继续使用**git add**以及**git commit**提交变更
 
