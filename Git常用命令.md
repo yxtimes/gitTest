@@ -1,0 +1,68 @@
+- 创建版本库
+  - $ git clone <url> #克隆远程版本库
+  - $ git init #初始化本地版本库
+- 修改和提交
+  - $ git status #查看状态
+  - $ git diff #查看变更内容
+  - $ git add . #跟踪所有改动过的文件
+  - $ git add <file> #跟踪指定的文件
+  - $ git mv <old> <new> #文件改名
+  - $ git rm <file> #删除文件
+  - $ git rm --cached <file>#停止跟踪文件但不删除
+  - $ git commit -m "<commit message>" #提交所有跟踪过的文件
+  - $ git commit --amend #修改最后一次提交
+- 查看提交历史
+  - $ git log #查看提交历史
+    - git log --graph --pretty=oneline --abbrev-commit #查看版本提交合并数据
+  - $ git log -p <file> #查看指定文件的提交历史
+  - $ git blame <file> #以列表方式查看指定文件的提交历史
+  - $ git reflog #查看版本库所有变更指令
+- 撤销
+  - $ git reset --hard HEAD #撤销工作目录中所有未提交文件的修改内容
+    - $ git reset --hard HEAD^ 回退到上一版本(HEAD^^回退前两个版本,HEAD~100向前回退100个版本)
+  - $ git checkout HEAD <file> #撤销指定的未提交文件修改内容
+    - 已经add提交到暂存区的内容,撤销add,并将内容放回工作区
+  - $ git checkout -- <file> #撤销工作区指定文件的修改
+    - 回到最近一次commit或add后的状态
+    - 已删除的文件,也可以用于恢复
+    - !不加入--选项的话,会变为切换分支/标签
+  - $ git revert <commit> #撤销指定的提交
+- 分支与标签
+  - $ git branch #显示所有本地分支
+  - $ git checkout <branch/tagname> #切换到指定的分支或标签
+    - $ git checkout -b <branch> #创建分支并切换-增加参数-b
+    - $ git checkout -b dev origin/dev #创建远程origin的dev分支到本地
+  - $ git branch <new-branch> #创建新分支
+  - $ git branch -d <branch> #删除本地分支
+  - $ git tag #列出所有的本地标签
+    - $ git show <tagname> #查看标签信息
+  - $ git tag <tagname> #基于最新提交创建标签
+    - $ git tag <tagname> <commit-ver> #基于历史提交的版本创建标签
+    - $ git tag -a <tag-name> -m "<tag message>" <commit-ver> #增加标签名及标签说明
+  - $ git tag -d <tagname> #删除标签
+    - 未合并的分支,强制删除使用**-D**参数
+- 暂存
+  - $ git stash #暂存当前工作区
+  - $ git stash list #查看暂存的列表
+  - $ git stash pop #恢复暂存的工作区并删除暂存数据
+  - $ git stash apply #恢复暂存工作区
+    - $ git stash apply stash@{0} #恢复第0个暂存工作区
+  - $ git stash drop #删除暂存工作区
+- 合并与衍合
+  - $ git merge <branch> #合并指定分支到当前分支
+  - $ git rebase <branch> #衍合指定分支到当前分支
+- 远程操作
+  - $ ssh-keygen -t rsa -C "youremail@example.com" #创建SSH_Key
+  - $ git remote -v #查看远程版本库信息
+  - $ git remote show <remote> #查看指定远程版本库信息
+  - $ git remote add <remote> <url> #添加远程版本库
+  - $ git fetch <remote> #从远程库获取代码
+  - $ git pull <remote> <branch> #下载代码及快速合并
+  - $ git push <remote> <branch> #上传代码及快速合并
+    - 首次上传时增加-u参数,关联本地和远程的branch版本
+  - $ git push <remote> :<branch/tag-name> #删除远程分支及标签
+  - $ git push --tags #上传所有标签
+  - $ git branch --set-upstream-to=origin/dev dev #建立本地分支和远程分支的关联
+  - $ git checkout -b <branch> <remote>/<branch> #创建远程remote的branch-name分支到本地
+- 其他
+  - .gitignore 忽略特殊文件,在版本库根目录创建
